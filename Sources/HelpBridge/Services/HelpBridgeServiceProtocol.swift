@@ -1,0 +1,30 @@
+/* HelpBridge is licensed under the MIT License.
+
+ Licensed under the Apache License, Version 2.0 (the "License");
+ you may not use this file except in compliance with the License.
+ You may obtain a copy of the License at
+
+ http://www.apache.org/licenses/LICENSE-2.0
+ 
+ Unless required by applicable law or agreed to in writing, software
+ distributed under the License is distributed on an "AS IS" BASIS,
+ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ See the License for the specific language governing permissions and
+ limitations under the License.
+
+ Attribution:
+ This software contains contributions by Sandor Kolotenko.
+ */
+
+import Foundation
+
+// MARK: - HelpBridgeService Protocol
+public protocol HelpBridgeServiceProtocol {
+    init(baseURL: String?, urlSession: URLSession) throws
+    
+    func submitSupportTicket(_ ticket: SupportTicket,
+                             completion: @escaping (Result<Void, HelpBridgeError>) -> Void)
+    
+    @available(iOS 13.0.0, *)
+    func submitSupportTicket(_ ticket: SupportTicket) async throws
+}
